@@ -253,48 +253,66 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
 
 <script>
 function applyMobileLayout(){
-  if(window.innerWidth>768)return;
+  var mobile=window.innerWidth<=768;
   var px='20px';
+
+  // Always prevent horizontal scroll
+  document.body.style.overflowX='hidden';
+
+  // Nav
+  var nav=document.querySelector('nav');
+  if(nav){nav.style.padding=mobile?'0 '+px:'';nav.style.height=mobile?'64px':'';}
+
   // Sections
   document.querySelectorAll('section').forEach(function(s){
     var st=s.getAttribute('style')||'';
-    if(st.includes('60px')){
-      s.style.padding='50px '+px;
-      if(st.includes('grid-template-columns:1fr 1fr')){
-        s.style.gridTemplateColumns='1fr';
-        s.style.gap='40px';
-      }
+    // Main content section with grid and 60px padding
+    if(st.includes('grid-template-columns:1fr 1fr')){
+      s.style.gridTemplateColumns=mobile?'1fr':'';
+      s.style.gap=mobile?'40px':'';
+      s.style.padding=mobile?'50px '+px:'';
+    } else if(st.includes('60px')){
+      s.style.padding=mobile?'50px '+px:'';
     }
+    if(st.includes('padding:80px 60px')){s.style.padding=mobile?'50px '+px:'';}
+    if(st.includes('padding:100px 60px')){s.style.padding=mobile?'50px '+px:'';}
   });
+
   // Divs with 2-col grid
   document.querySelectorAll('div').forEach(function(d){
     var st=d.getAttribute('style')||'';
     if(st.includes('grid-template-columns:1fr 1fr')){
-      d.style.gridTemplateColumns='1fr';
-      d.style.gap='24px';
+      d.style.gridTemplateColumns=mobile?'1fr':'';
+      d.style.gap=mobile?'24px':'';
+    }
+    // Contact detail rows with flex
+    if(st.includes('gap:20px')&&st.includes('align-items:flex-start')){
+      d.style.gap=mobile?'12px':'';
+    }
+    if(st.includes('gap:20px')&&st.includes('align-items:center')){
+      d.style.gap=mobile?'12px':'';
     }
   });
+
   // Map iframe
   document.querySelectorAll('iframe').forEach(function(f){
-    f.style.width='100%';
-    f.style.minHeight='280px';
+    f.style.width=mobile?'100%':'';
+    f.style.minHeight=mobile?'280px':'';
   });
-  // Contact info flex rows → wrap
-  document.querySelectorAll('div[style*="gap:20px;align-items:flex-start"]').forEach(function(d){
-    d.style.gap='12px';
-  });
+
   // Footer
   var footer=document.querySelector('footer');
   if(footer){
-    footer.style.padding='48px '+px+' 32px';
+    footer.style.padding=mobile?'48px '+px+' 32px':'';
     var inner=footer.querySelector('.footer-inner');
-    if(inner){inner.style.gridTemplateColumns='1fr';inner.style.gap='32px';}
+    if(inner){inner.style.gridTemplateColumns=mobile?'1fr':'';inner.style.gap=mobile?'32px':'';}
     var bottom=footer.querySelector('.footer-bottom');
-    if(bottom){bottom.style.flexDirection='column';bottom.style.gap='10px';bottom.style.textAlign='center';}
+    if(bottom){bottom.style.flexDirection=mobile?'column':'';bottom.style.gap=mobile?'10px':'';bottom.style.textAlign=mobile?'center':'';}
   }
 }
-applyMobileLayout();
+document.addEventListener('DOMContentLoaded',applyMobileLayout);
 window.addEventListener('resize',applyMobileLayout);
+applyMobileLayout();
 </script>
 
 </body>

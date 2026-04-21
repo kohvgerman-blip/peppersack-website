@@ -481,87 +481,118 @@ function switchTour(idx) {
 </script>
 
 <script>
-// Mobile layout fixes — runs immediately on small screens
+// Mobile layout fixes — comprehensive version
 function applyMobileLayout() {
-  if (window.innerWidth > 768) return;
+  const mobile = window.innerWidth <= 768;
   const px = '20px';
 
-  // About section: 2-col grid → 1 col
-  document.querySelectorAll('section').forEach(s => {
+  // Always prevent horizontal scroll
+  document.body.style.overflowX = 'hidden';
+
+  // Nav
+  const nav = document.querySelector('nav');
+  if (nav) {
+    nav.style.padding = mobile ? '0 ' + px : '';
+    nav.style.height = mobile ? '64px' : '';
+  }
+
+  // Sections
+  document.querySelectorAll('section').forEach(function(s) {
     const st = s.getAttribute('style') || '';
+    // About: 2-col grid → 1 col
     if (st.includes('grid-template-columns:1fr 1fr')) {
-      s.style.gridTemplateColumns = '1fr';
-      s.style.gap = '36px';
-      s.style.padding = '60px ' + px;
+      s.style.gridTemplateColumns = mobile ? '1fr' : '';
+      s.style.gap = mobile ? '36px' : '';
+      s.style.padding = mobile ? '60px ' + px : '';
     }
+    // Large padded sections
     if (st.includes('padding:120px 60px') || st.includes('padding:130px 60px')) {
-      s.style.padding = '60px ' + px;
+      s.style.padding = mobile ? '60px ' + px : '';
+    }
+    if (st.includes('padding:100px 60px')) {
+      s.style.padding = mobile ? '50px ' + px : '';
+    }
+    // Hero: reduce inner text padding
+    if (st.includes('100vh')) {
+      var heroCenter = s.querySelector('div[style*="text-align:center"]');
+      if (heroCenter) { heroCenter.style.padding = mobile ? '0 ' + px : ''; }
+      var heroP = s.querySelector('p[style*="font-size:22px"]');
+      if (heroP) {
+        heroP.style.fontSize = mobile ? '17px' : '';
+        heroP.style.letterSpacing = mobile ? '1px' : '';
+      }
     }
   });
 
-  // Features strip: 4-col → 2-col
-  document.querySelectorAll('div').forEach(d => {
+  // Divs
+  document.querySelectorAll('div').forEach(function(d) {
     const st = d.getAttribute('style') || '';
+    // Features strip: 4-col → 2-col
     if (st.includes('grid-template-columns:repeat(4,1fr)')) {
-      d.style.gridTemplateColumns = '1fr 1fr';
-      d.style.padding = '40px ' + px;
+      d.style.gridTemplateColumns = mobile ? 'repeat(2,1fr)' : '';
+      d.style.padding = mobile ? '40px ' + px : '';
     }
-    // Gallery: complex grid → single column
+    // Gallery grid: complex → single column
     if (st.includes('grid-template-columns:1.3fr 1fr 1fr')) {
-      d.style.gridTemplateColumns = '1fr';
-      d.style.gridTemplateRows = 'auto';
+      d.style.gridTemplateColumns = mobile ? '1fr' : '';
+      d.style.gridTemplateRows = mobile ? 'auto' : '';
     }
-    // Gallery items — remove span 2
+    // Gallery items: remove row span, set height
     if (st.includes('grid-row:span 2')) {
-      d.style.gridRow = 'span 1';
-      d.style.height = '260px';
+      d.style.gridRow = mobile ? 'span 1' : '';
+      d.style.height = mobile ? '240px' : '';
     }
-    // Stats grid in about section
-    if (st.includes('grid-template-columns:1fr 1fr;gap:1px')) {
-      d.style.gridTemplateColumns = '1fr 1fr';
+    // Other gallery items with overflow:hidden and a child img (not span-2)
+    if (st.includes('overflow:hidden;position:relative') && !st.includes('grid-row:span 2') && d.querySelector('img')) {
+      d.style.height = mobile ? '240px' : '';
     }
-    // CTA section max-width
+    // CTA section inner container
     if (st.includes('max-width:760px')) {
-      d.style.padding = '0 ' + px;
+      d.style.padding = mobile ? '0 ' + px : '';
     }
-    // Large padding divs
+    // Features inner container with 80px 60px grid
     if (st.includes('padding:80px 60px') && st.includes('grid')) {
-      d.style.padding = '40px ' + px;
+      d.style.padding = mobile ? '40px ' + px : '';
+    }
+    // Tour tabs container: allow wrapping/scroll
+    if (st.includes('display:flex') && st.includes('justify-content:center') && d.querySelector('.tour-tab')) {
+      d.style.flexWrap = mobile ? 'wrap' : '';
+      d.style.overflowX = mobile ? 'auto' : '';
+      d.style.width = mobile ? '100%' : '';
     }
   });
 
-  // Gallery images height
-  document.querySelectorAll('div[style*="overflow:hidden;position:relative"]').forEach(d => {
-    if (!d.querySelector('img')) return;
-    d.style.height = '250px';
-  });
-
-  // Feature strip borders
-  document.querySelectorAll('div[style*="border-right:1px solid rgba(201,146,42,.1)"]').forEach(d => {
-    d.style.borderRight = 'none';
-    d.style.borderBottom = '1px solid rgba(201,146,42,.1)';
-    d.style.padding = '28px 16px';
+  // Feature items with border-right
+  document.querySelectorAll('div').forEach(function(d) {
+    const st = d.getAttribute('style') || '';
+    if (st.includes('border-right:1px solid rgba(201,146,42,.1)')) {
+      d.style.borderRight = mobile ? 'none' : '';
+      d.style.borderBottom = mobile ? '1px solid rgba(201,146,42,.1)' : '';
+      d.style.padding = mobile ? '28px 16px' : '';
+    }
   });
 
   // Footer
   const footer = document.querySelector('footer');
   if (footer) {
-    footer.style.padding = '48px ' + px + ' 32px';
+    footer.style.padding = mobile ? '48px ' + px + ' 32px' : '';
     const inner = footer.querySelector('.footer-inner');
-    if (inner) { inner.style.gridTemplateColumns = '1fr'; inner.style.gap = '32px'; }
+    if (inner) {
+      inner.style.gridTemplateColumns = mobile ? '1fr' : '';
+      inner.style.gap = mobile ? '32px' : '';
+    }
     const bottom = footer.querySelector('.footer-bottom');
-    if (bottom) { bottom.style.flexDirection = 'column'; bottom.style.gap = '10px'; bottom.style.textAlign = 'center'; }
+    if (bottom) {
+      bottom.style.flexDirection = mobile ? 'column' : '';
+      bottom.style.gap = mobile ? '10px' : '';
+      bottom.style.textAlign = mobile ? 'center' : '';
+    }
   }
-
-  // Hero subtitle font size
-  document.querySelectorAll('p[style*="font-size:22px"]').forEach(p => {
-    p.style.fontSize = '17px';
-    p.style.letterSpacing = '1px';
-  });
 }
 
-applyMobileLayout();
+document.addEventListener('DOMContentLoaded', applyMobileLayout);
 window.addEventListener('resize', applyMobileLayout);
+applyMobileLayout();
 </script>
 </body>
 </html>
