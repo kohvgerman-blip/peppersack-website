@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
 <title>Menu — Peppersack</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
@@ -283,6 +283,50 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
     });
   });
 })();
+</script>
+
+
+<script>
+function applyMobileLayout(){
+  if(window.innerWidth>768)return;
+  var px='20px';
+  // Main section padding
+  document.querySelectorAll('section').forEach(function(s){
+    var st=s.getAttribute('style')||'';
+    if(st.includes('padding:80px 60px')){s.style.padding='40px '+px;}
+    if(st.includes('padding:100px 60px')){s.style.padding='50px '+px;}
+  });
+  // All 2-col grids in menu → 1 col
+  document.querySelectorAll('div').forEach(function(d){
+    var st=d.getAttribute('style')||'';
+    if(st.includes('grid-template-columns:1fr 1fr')){
+      d.style.gridTemplateColumns='1fr';
+      d.style.gap='24px';
+      d.style.padding='0';
+    }
+    if(st.includes('padding:60px')&&st.includes('border')){
+      d.style.padding='32px '+px;
+    }
+  });
+  // Images
+  document.querySelectorAll('section img').forEach(function(img){
+    img.style.width='100%';
+    img.style.height='200px';
+    img.style.objectFit='cover';
+    img.style.borderRadius='4px';
+  });
+  // Footer
+  var footer=document.querySelector('footer');
+  if(footer){
+    footer.style.padding='48px '+px+' 32px';
+    var inner=footer.querySelector('.footer-inner');
+    if(inner){inner.style.gridTemplateColumns='1fr';inner.style.gap='32px';}
+    var bottom=footer.querySelector('.footer-bottom');
+    if(bottom){bottom.style.flexDirection='column';bottom.style.gap='10px';bottom.style.textAlign='center';}
+  }
+}
+applyMobileLayout();
+window.addEventListener('resize',applyMobileLayout);
 </script>
 
 </body>

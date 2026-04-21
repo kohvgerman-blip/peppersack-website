@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
 <title>Location & Reservations — Peppersack</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
@@ -248,6 +248,53 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
     });
   });
 })();
+</script>
+
+
+<script>
+function applyMobileLayout(){
+  if(window.innerWidth>768)return;
+  var px='20px';
+  // Sections
+  document.querySelectorAll('section').forEach(function(s){
+    var st=s.getAttribute('style')||'';
+    if(st.includes('60px')){
+      s.style.padding='50px '+px;
+      if(st.includes('grid-template-columns:1fr 1fr')){
+        s.style.gridTemplateColumns='1fr';
+        s.style.gap='40px';
+      }
+    }
+  });
+  // Divs with 2-col grid
+  document.querySelectorAll('div').forEach(function(d){
+    var st=d.getAttribute('style')||'';
+    if(st.includes('grid-template-columns:1fr 1fr')){
+      d.style.gridTemplateColumns='1fr';
+      d.style.gap='24px';
+    }
+  });
+  // Map iframe
+  document.querySelectorAll('iframe').forEach(function(f){
+    f.style.width='100%';
+    f.style.minHeight='280px';
+  });
+  // Contact info flex rows → wrap
+  document.querySelectorAll('div[style*="gap:20px;align-items:flex-start"]').forEach(function(d){
+    d.style.gap='12px';
+  });
+  // Footer
+  var footer=document.querySelector('footer');
+  if(footer){
+    footer.style.padding='48px '+px+' 32px';
+    var inner=footer.querySelector('.footer-inner');
+    if(inner){inner.style.gridTemplateColumns='1fr';inner.style.gap='32px';}
+    var bottom=footer.querySelector('.footer-bottom');
+    if(bottom){bottom.style.flexDirection='column';bottom.style.gap='10px';bottom.style.textAlign='center';}
+  }
+}
+applyMobileLayout();
+window.addEventListener('resize',applyMobileLayout);
 </script>
 
 </body>
