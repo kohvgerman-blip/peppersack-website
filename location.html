@@ -59,6 +59,53 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
 .footer-bottom{max-width:1400px;margin:40px auto 0;padding-top:28px;border-top:1px solid rgba(201,146,42,.08);display:flex;justify-content:space-between;align-items:center}
 .footer-bottom p{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:rgba(200,191,175,.3);text-transform:uppercase}
 .footer-gr{width:30px;height:1px;background:rgba(201,146,42,.3)}
+
+/* ── HAMBURGER + MOBILE MENU ── */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;z-index:101;position:relative}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--cream);transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(10,7,4,.98);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'Cinzel',serif;font-size:14px;letter-spacing:4px;text-transform:uppercase;color:var(--cream-d);text-decoration:none;transition:color .3s}
+.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu .lang-switcher{margin-top:16px}
+
+@media(max-width:768px){
+  .cursor,.cursor-ring{display:none}
+  nav{padding:0 16px;height:64px;width:100%;overflow:hidden}
+  .nav-links,.lang-switcher{display:none!important}
+  nav>div{display:none!important}
+  .nav-reserve{display:none!important}
+  .hamburger{display:flex}
+  /* 2-col info+map → stacked */
+  section[style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr!important;
+    gap:40px!important;
+    padding:60px 24px!important;
+  }
+  section[style*="100px 60px"]{padding:60px 24px!important}
+  /* Map iframe */
+  iframe{width:100%!important;min-height:300px!important}
+  /* Info blocks */
+  div[style*="gap:20px;align-items:flex-start"]{gap:12px!important}
+  /* Footer */
+  footer{padding:50px 24px 32px!important}
+  .footer-inner{grid-template-columns:1fr!important;gap:36px!important}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+  .footer-col a,.footer-col p{font-size:17px!important}
+  /* Text */
+  body{font-size:18px!important}
+  p[style*="font-size:15px"]{font-size:17px!important;line-height:1.8!important}
+  p[style*="font-size:16px"]{font-size:17px!important}
+  a[style*="font-size:18px"]{font-size:18px!important}
+  .section-tag{font-size:11px!important;letter-spacing:4px!important}
+  .section-h2{font-size:clamp(26px,7vw,36px)!important}
+  /* Hero */
+  section[style*="60vh"]{height:50vh!important;min-height:320px!important}
+  section[style*="60vh"] h1{font-size:clamp(32px,9vw,56px)!important}
+}
 </style>
 </head>
 <body>
@@ -68,6 +115,7 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
 <nav id="nav">
   <a href="index.html" class="nav-logo"><span class="nav-dots"><span class="nd-r"></span><span class="nd-d"></span></span>Peppersack</a>
   <ul class="nav-links"><li><a href="index.html" data-en="Home" data-et="Avaleht" data-ru="Главная" data-fi="Etusivu">Home</a></li><li><a href="menu.html" data-en="Menu" data-et="Menüü" data-ru="Меню" data-fi="Menu">Menu</a></li><li><a href="location.html" class="active" data-en="Location & Reservations" data-et="Asukoht" data-ru="Местоположение" data-fi="Sijainti">Location & Reservations</a></li><li><a href="gallery.html" data-en="Gallery" data-et="Galerii" data-ru="Галерея" data-fi="Galleria">Gallery</a></li><li><a href="shop.html" data-en="E-Shop" data-et="E-Pood" data-ru="Интернет-магазин" data-fi="Verkkokauppa">E-Shop</a></li></ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   <div style="display:flex;align-items:center;gap:16px">
     <div class="lang-switcher">
       <button class="lang-btn active" data-lang="en">EN</button>
@@ -75,9 +123,17 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
       <button class="lang-btn" data-lang="ru">RU</button>
       <button class="lang-btn" data-lang="fi">FI</button>
     </div>
-    <a href="location.html" class="btn-outline" style="padding:9px 22px;font-size:9px" data-en="Reserve" data-et="Broneeri" data-ru="Забронировать" data-fi="Varaa">Reserve</a>
+    <a href="location.html" class="btn-outline nav-reserve" style="padding:9px 22px;font-size:9px" data-en="Reserve" data-et="Broneeri" data-ru="Забронировать" data-fi="Varaa">Reserve</a>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" data-en="Home" data-et="Avaleht" data-ru="Главная" data-fi="Etusivu">Home</a>
+  <a href="menu.html" data-en="Menu" data-et="Menüü" data-ru="Меню" data-fi="Menu">Menu</a>
+  <a href="location.html" data-en="Location & Reservations" data-et="Asukoht" data-ru="Местоположение" data-fi="Sijainti">Location</a>
+  <a href="gallery.html" data-en="Gallery" data-et="Galerii" data-ru="Галерея" data-fi="Galleria">Gallery</a>
+  <a href="shop.html" data-en="E-Shop" data-et="E-Pood" data-ru="Интернет-магазин" data-fi="Verkkokauppa">E-Shop</a>
+  <a href="location.html" class="btn-gold" style="margin-top:8px" data-en="Reserve a Table" data-et="Broneeri laud" data-ru="Забронировать" data-fi="Varaa pöytä">Reserve a Table</a>
+</div>
 
 <div style="height:80px"></div>
 <section style="position:relative;height:60vh;min-height:500px;display:flex;align-items:center;justify-content:center;overflow:hidden">
@@ -173,5 +229,26 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
   document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
   const sl=localStorage.getItem('pp_lang');if(sl)setLang(sl);
 </script>
+
+<script>
+(function(){
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if(!hamburger||!mobileMenu)return;
+  hamburger.addEventListener('click',()=>{
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click',()=>{
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow='';
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
