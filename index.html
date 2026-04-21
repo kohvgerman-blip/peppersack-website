@@ -372,5 +372,89 @@ div[style*="overflow:hidden"]:hover .gover{opacity:1!important}
   document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
   const sl=localStorage.getItem('pp_lang');if(sl)setLang(sl);
 </script>
+
+<script>
+// Mobile layout fixes — runs immediately on small screens
+function applyMobileLayout() {
+  if (window.innerWidth > 768) return;
+  const px = '20px';
+
+  // About section: 2-col grid → 1 col
+  document.querySelectorAll('section').forEach(s => {
+    const st = s.getAttribute('style') || '';
+    if (st.includes('grid-template-columns:1fr 1fr')) {
+      s.style.gridTemplateColumns = '1fr';
+      s.style.gap = '36px';
+      s.style.padding = '60px ' + px;
+    }
+    if (st.includes('padding:120px 60px') || st.includes('padding:130px 60px')) {
+      s.style.padding = '60px ' + px;
+    }
+  });
+
+  // Features strip: 4-col → 2-col
+  document.querySelectorAll('div').forEach(d => {
+    const st = d.getAttribute('style') || '';
+    if (st.includes('grid-template-columns:repeat(4,1fr)')) {
+      d.style.gridTemplateColumns = '1fr 1fr';
+      d.style.padding = '40px ' + px;
+    }
+    // Gallery: complex grid → single column
+    if (st.includes('grid-template-columns:1.3fr 1fr 1fr')) {
+      d.style.gridTemplateColumns = '1fr';
+      d.style.gridTemplateRows = 'auto';
+    }
+    // Gallery items — remove span 2
+    if (st.includes('grid-row:span 2')) {
+      d.style.gridRow = 'span 1';
+      d.style.height = '260px';
+    }
+    // Stats grid in about section
+    if (st.includes('grid-template-columns:1fr 1fr;gap:1px')) {
+      d.style.gridTemplateColumns = '1fr 1fr';
+    }
+    // CTA section max-width
+    if (st.includes('max-width:760px')) {
+      d.style.padding = '0 ' + px;
+    }
+    // Large padding divs
+    if (st.includes('padding:80px 60px') && st.includes('grid')) {
+      d.style.padding = '40px ' + px;
+    }
+  });
+
+  // Gallery images height
+  document.querySelectorAll('div[style*="overflow:hidden;position:relative"]').forEach(d => {
+    if (!d.querySelector('img')) return;
+    d.style.height = '250px';
+  });
+
+  // Feature strip borders
+  document.querySelectorAll('div[style*="border-right:1px solid rgba(201,146,42,.1)"]').forEach(d => {
+    d.style.borderRight = 'none';
+    d.style.borderBottom = '1px solid rgba(201,146,42,.1)';
+    d.style.padding = '28px 16px';
+  });
+
+  // Footer
+  const footer = document.querySelector('footer');
+  if (footer) {
+    footer.style.padding = '48px ' + px + ' 32px';
+    const inner = footer.querySelector('.footer-inner');
+    if (inner) { inner.style.gridTemplateColumns = '1fr'; inner.style.gap = '32px'; }
+    const bottom = footer.querySelector('.footer-bottom');
+    if (bottom) { bottom.style.flexDirection = 'column'; bottom.style.gap = '10px'; bottom.style.textAlign = 'center'; }
+  }
+
+  // Hero subtitle font size
+  document.querySelectorAll('p[style*="font-size:22px"]').forEach(p => {
+    p.style.fontSize = '17px';
+    p.style.letterSpacing = '1px';
+  });
+}
+
+applyMobileLayout();
+window.addEventListener('resize', applyMobileLayout);
+</script>
 </body>
 </html>
