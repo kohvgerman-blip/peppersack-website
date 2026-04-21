@@ -49,11 +49,6 @@ nav.scrolled{background:rgba(10,7,4,.93);backdrop-filter:blur(20px);border-botto
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}.reveal-d4{transition-delay:.4s}
-.marquee-strip{background:var(--red);padding:13px 0;overflow:hidden;position:relative;z-index:2;border-top:1px solid rgba(212,168,67,.2);border-bottom:1px solid rgba(212,168,67,.2)}
-.marquee-track{display:flex;width:max-content;animation:marquee 30s linear infinite}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marquee-item{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-l);white-space:nowrap;padding:0 36px;display:flex;align-items:center;gap:36px}
-.marquee-dot{width:4px;height:4px;border-radius:50%;background:var(--gold-l);opacity:.5}
 footer{background:#020101;border-top:1px solid rgba(139,26,26,.4);padding:80px 60px 50px}
 .footer-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px}
 .footer-logo{font-family:'Cinzel',serif;font-size:18px;font-weight:700;letter-spacing:6px;color:var(--cream);display:block;margin-bottom:16px}
@@ -237,10 +232,14 @@ footer{background:#020101;border-top:1px solid rgba(139,26,26,.4);padding:80px 6
 @keyframes sw{0%{transform:translateY(0);opacity:1}100%{transform:translateY(12px);opacity:0}}
 </style>
 
-<div class="marquee-strip">
-  <div class="marquee-track">
-    <div class="marquee-item">Medieval Dining<span class="marquee-dot"></span></div><div class="marquee-item">Tallinn Old Town<span class="marquee-dot"></span></div><div class="marquee-item">Estonian Cuisine<span class="marquee-dot"></span></div><div class="marquee-item">Live Entertainment<span class="marquee-dot"></span></div><div class="marquee-item">Since 1420s<span class="marquee-dot"></span></div><div class="marquee-item">Vana turg 6<span class="marquee-dot"></span></div><div class="marquee-item">Medieval Dining<span class="marquee-dot"></span></div><div class="marquee-item">Tallinn Old Town<span class="marquee-dot"></span></div><div class="marquee-item">Estonian Cuisine<span class="marquee-dot"></span></div><div class="marquee-item">Live Entertainment<span class="marquee-dot"></span></div><div class="marquee-item">Since 1420s<span class="marquee-dot"></span></div><div class="marquee-item">Vana turg 6<span class="marquee-dot"></span></div><div class="marquee-item">Medieval Dining<span class="marquee-dot"></span></div><div class="marquee-item">Tallinn Old Town<span class="marquee-dot"></span></div><div class="marquee-item">Estonian Cuisine<span class="marquee-dot"></span></div><div class="marquee-item">Live Entertainment<span class="marquee-dot"></span></div><div class="marquee-item">Since 1420s<span class="marquee-dot"></span></div><div class="marquee-item">Vana turg 6<span class="marquee-dot"></span></div><div class="marquee-item">Medieval Dining<span class="marquee-dot"></span></div><div class="marquee-item">Tallinn Old Town<span class="marquee-dot"></span></div><div class="marquee-item">Estonian Cuisine<span class="marquee-dot"></span></div><div class="marquee-item">Live Entertainment<span class="marquee-dot"></span></div><div class="marquee-item">Since 1420s<span class="marquee-dot"></span></div><div class="marquee-item">Vana turg 6<span class="marquee-dot"></span></div>
+<div style="position:relative;padding:32px 60px;display:flex;align-items:center;justify-content:center;gap:32px;overflow:hidden">
+  <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,67,.3))"></div>
+  <div style="display:flex;align-items:center;gap:24px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(212,168,67,.5);white-space:nowrap">
+    <span style="width:5px;height:5px;border:1px solid rgba(212,168,67,.4);transform:rotate(45deg);display:block"></span>
+    Est. in the Heart of Tallinn Old Town · Since 1420s
+    <span style="width:5px;height:5px;border:1px solid rgba(212,168,67,.4);transform:rotate(45deg);display:block"></span>
   </div>
+  <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(212,168,67,.3),transparent)"></div>
 </div>
 
 <section style="padding:130px 60px;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:center">
