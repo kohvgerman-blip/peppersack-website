@@ -269,7 +269,33 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   // Language switcher
   const translations={};
-  function setLang(l){document.querySelectorAll('[data-en]').forEach(el=>{if(el.dataset[l])el.textContent=el.dataset[l]});document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));localStorage.setItem('pp_lang',l)}
+  // Store original Estonian dish names on load
+  document.querySelectorAll('p[style*="font-weight:500"]').forEach(function(nameEl) {
+    var descEl = nameEl.nextElementSibling;
+    if (descEl && descEl.style && descEl.style.fontStyle === 'italic') {
+      nameEl.dataset.et = nameEl.textContent;
+      nameEl.dataset.en = descEl.textContent;
+    }
+  });
+
+  function setLang(l) {
+    document.querySelectorAll('[data-en]').forEach(function(el) {
+      if (el.dataset[l]) el.innerHTML = el.dataset[l];
+    });
+    // Menu dish names: show English description for RU/FI
+    document.querySelectorAll('p[style*="font-weight:500"]').forEach(function(nameEl) {
+      if (!nameEl.dataset.et) return;
+      if (l === 'ru' || l === 'fi') {
+        nameEl.textContent = nameEl.dataset.en;
+      } else {
+        nameEl.textContent = nameEl.dataset.et;
+      }
+    });
+    document.querySelectorAll('.lang-btn').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.lang === l);
+    });
+    localStorage.setItem('pp_lang', l);
+  }
   document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
   const sl=localStorage.getItem('pp_lang');if(sl)setLang(sl);
 </script>
