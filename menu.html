@@ -1,16 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18077191587"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-18077191587');
-</script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Menu — Peppersack</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
@@ -20,7 +12,7 @@ html{scroll-behavior:smooth}
 body{font-family:'EB Garamond',serif;background:var(--dark);color:var(--cream);overflow-x:hidden;cursor:none}
 .cursor{width:8px;height:8px;border-radius:50%;background:var(--gold);position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference}
 .cursor-ring{width:36px;height:36px;border-radius:50%;border:1px solid rgba(201,146,42,.6);position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
-body::before{content;position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+body::before{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 60px;height:80px;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
 nav.scrolled{background:rgba(10,7,4,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,146,42,.15);height:64px}
 .nav-logo{font-family:'Cinzel',serif;font-size:20px;font-weight:700;letter-spacing:6px;color:var(--cream);text-decoration:none;display:flex;align-items:center;gap:12px;transition:color .3s}
@@ -30,22 +22,22 @@ nav.scrolled{background:rgba(10,7,4,.93);backdrop-filter:blur(20px);border-botto
 .nd-d{width:9px;height:9px;border-radius:50%;background:#4a3e38}
 .nav-links{display:flex;gap:0;list-style:none;align-items:center}
 .nav-links a{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--cream-d);text-decoration:none;padding:10px 18px;position:relative;transition:color .3s}
-.nav-links a::after{content;position:absolute;bottom:4px;left:18px;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a::after{content:'';position:absolute;bottom:4px;left:18px;width:0;height:1px;background:var(--gold);transition:width .3s}
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
 .nav-links a:hover::after,.nav-links a.active::after{width:calc(100% - 36px)}
 .lang-switcher{display:flex;gap:6px;margin-left:20px}
 .lang-btn{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;color:var(--cream-d);background:none;border:1px solid rgba(201,146,42,.2);padding:5px 10px;cursor:pointer;transition:all .3s}
 .lang-btn.active,.lang-btn:hover{color:var(--gold);border-color:var(--gold)}
 .btn-gold{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;background:var(--gold);color:var(--dark);padding:16px 40px;text-decoration:none;font-weight:700;border:1px solid var(--gold);position:relative;overflow:hidden;transition:color .4s;display:inline-block}
-.btn-gold::before{content;position:absolute;inset:0;background:rgba(255,255,255,.15);transform:translateX(-100%) skewX(-15deg);transition:transform .5s}
+.btn-gold::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);transform:translateX(-100%) skewX(-15deg);transition:transform .5s}
 .btn-gold:hover{color:var(--dark)}
 .btn-gold:hover::before{transform:translateX(200%) skewX(-15deg)}
 .btn-outline{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;background:transparent;color:var(--cream);padding:16px 40px;text-decoration:none;border:1px solid rgba(240,236,228,.3);position:relative;overflow:hidden;transition:color .4s,border-color .4s;display:inline-block}
-.btn-outline::before{content;position:absolute;inset:0;background:rgba(201,146,42,.08);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.btn-outline::before{content:'';position:absolute;inset:0;background:rgba(201,146,42,.08);transform:scaleX(0);transform-origin:left;transition:transform .4s}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
 .btn-outline:hover::before{transform:scaleX(1)}
 .section-tag{font-family:'Cinzel',serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:20px}
-.section-tag::before{content;width:30px;height:1px;background:var(--gold)}
+.section-tag::before{content:'';width:30px;height:1px;background:var(--gold)}
 .section-h2{font-family:'Cinzel',serif;font-size:clamp(28px,3vw,46px);font-weight:600;color:var(--cream);letter-spacing:2px;line-height:1.15;margin-bottom:28px}
 .section-rule{width:50px;height:2px;background:var(--gold);margin:24px 0}
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
@@ -67,58 +59,6 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
 .footer-bottom{max-width:1400px;margin:40px auto 0;padding-top:28px;border-top:1px solid rgba(201,146,42,.08);display:flex;justify-content:space-between;align-items:center}
 .footer-bottom p{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:rgba(200,191,175,.3);text-transform:uppercase}
 .footer-gr{width:30px;height:1px;background:rgba(201,146,42,.3)}
-
-/* ── HAMBURGER + MOBILE MENU ── */
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;z-index:101;position:relative}
-.hamburger span{display:block;width:24px;height:1.5px;background:var(--cream);transition:all .3s}
-.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;inset:0;background:rgba(10,7,4,.98);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:32px}
-.mobile-menu.open{display:flex}
-.mobile-menu a{font-family:'Cinzel',serif;font-size:14px;letter-spacing:4px;text-transform:uppercase;color:var(--cream-d);text-decoration:none;transition:color .3s}
-.mobile-menu a:hover{color:var(--gold)}
-.mobile-menu .lang-switcher{margin-top:16px}
-
-@media(max-width:768px){
-  .cursor,.cursor-ring{display:none}
-  nav{padding:0 16px;height:64px;width:100%;overflow:hidden}
-  .nav-links,.lang-switcher{display:none!important}
-  nav>div{display:none!important}
-  .nav-reserve{display:none!important}
-  .hamburger{display:flex}
-  /* Main section: 2-col menu grid → 1 col */
-  section[style*="padding:80px 60px"]{padding:40px 16px!important}
-  section[style*="padding:80px 60px"] > div[style*="grid-template-columns:1fr 1fr"]{
-    grid-template-columns:1fr!important;
-    gap:24px!important;
-  }
-  /* Menu category grids */
-  div[style*="display:grid;grid-template-columns:1fr 1fr"]{
-    grid-template-columns:1fr!important;
-    gap:16px!important;
-    padding:0!important;
-  }
-  /* Images in menu */
-  section img{width:100%!important;height:220px!important;object-fit:cover!important;border-radius:4px!important}
-  /* Allergen box */
-  div[style*="padding:60px"]{padding:32px 16px!important}
-  /* Footer */
-  footer{padding:50px 24px 32px!important}
-  .footer-inner{grid-template-columns:1fr!important;gap:36px!important}
-  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
-  .footer-col a,.footer-col p{font-size:17px!important}
-  /* Text scaling */
-  body{font-size:18px!important}
-  p[style*="font-size:15px"]{font-size:17px!important;line-height:1.8!important}
-  p[style*="font-size:16px"]{font-size:17px!important;line-height:1.8!important}
-  h3[style*="font-size:12px"]{font-size:13px!important;letter-spacing:2px!important}
-  .section-tag{font-size:11px!important;letter-spacing:4px!important}
-  .section-h2{font-size:clamp(26px,7vw,36px)!important}
-  /* Hero */
-  section[style*="60vh"]{height:50vh!important;min-height:320px!important}
-  section[style*="60vh"] h1{font-size:clamp(32px,9vw,56px)!important}
-}
 </style>
 </head>
 <body>
@@ -127,8 +67,7 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
 <div class="cursor-ring" id="ring"></div>
 <nav id="nav">
   <a href="index.html" class="nav-logo"><span class="nav-dots"><span class="nd-r"></span><span class="nd-d"></span></span>Peppersack</a>
-  <ul class="nav-links"><li><a href="index.html" data-en="Home" data-et="Avaleht" data-ru="Главная" data-fi="Etusivu">Home</a></li><li><a href="menu.html" class="active" data-en="Menu" data-et="Menüü" data-ru="Меню" data-fi="Menu">Menu</a></li><li><a href="location.html" data-en="Location & Reservations" data-et="Asukoht" data-ru="Местоположение" data-fi="Sijainti">Location & Reservations</a></li><li><a href="gallery.html" data-en="Gallery" data-et="Galerii" data-ru="Галерея" data-fi="Galleria">Gallery</a></li><li><a href="shop.html" data-en="E-Shop" data-et="E-Pood" data-ru="Интернет-магазин" data-fi="Verkkokauppa">E-Shop</a></li></ul>
-  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links"><li><a href="index.html" data-en="Home" data-et="Avaleht" data-ru="Главная" data-fi="Etusivu">Home</a></li><li><a href="menu.html" class="active" data-en="Menu" data-et="Menüü" data-ru="Меню" data-fi="Menu">Menu</a></li><li><a href="location.html" data-en="Location & Reservations" data-et="Asukoht" data-ru="Местоположение" data-fi="Sijainti">Location & Reservations</a></li><li><a href="gallery.html" data-en="Gallery" data-et="Galerii" data-ru="Галерея" data-fi="Galleria">Gallery</a></li><li><a href="shop.html" data-en="E-Shop" data-et="E-Pood" data-ru="Интернет-магазин" data-fi="Verkkokauppa">E-Shop</a></li><li><a href="winter-events.html" data-en="Winter Events" data-et="Talveüritused" data-ru="Зимние мероприятия" data-fi="Talvitapahtumat">Winter Events</a></li></ul>
   <div style="display:flex;align-items:center;gap:16px">
     <div class="lang-switcher">
       <button class="lang-btn active" data-lang="en">EN</button>
@@ -136,17 +75,9 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
       <button class="lang-btn" data-lang="ru">RU</button>
       <button class="lang-btn" data-lang="fi">FI</button>
     </div>
-    <a href="location.html" class="btn-outline nav-reserve" style="padding:9px 22px;font-size:9px" data-en="Reserve" data-et="Broneeri" data-ru="Забронировать" data-fi="Varaa">Reserve</a>
+    <a href="location.html" class="btn-outline" style="padding:9px 22px;font-size:9px" data-en="Reserve" data-et="Broneeri" data-ru="Забронировать" data-fi="Varaa">Reserve</a>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" data-en="Home" data-et="Avaleht" data-ru="Главная" data-fi="Etusivu">Home</a>
-  <a href="menu.html" data-en="Menu" data-et="Menüü" data-ru="Меню" data-fi="Menu">Menu</a>
-  <a href="location.html" data-en="Location & Reservations" data-et="Asukoht" data-ru="Местоположение" data-fi="Sijainti">Location</a>
-  <a href="gallery.html" data-en="Gallery" data-et="Galerii" data-ru="Галерея" data-fi="Galleria">Gallery</a>
-  <a href="shop.html" data-en="E-Shop" data-et="E-Pood" data-ru="Интернет-магазин" data-fi="Verkkokauppa">E-Shop</a>
-  <a href="location.html" class="btn-gold" style="margin-top:8px" data-en="Reserve a Table" data-et="Broneeri laud" data-ru="Забронировать" data-fi="Varaa pöytä">Reserve a Table</a>
-</div>
 
 <div style="height:80px"></div>
 <section style="position:relative;height:60vh;min-height:500px;display:flex;align-items:center;justify-content:center;overflow:hidden">
@@ -167,7 +98,7 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
       <h2 class="section-h2 reveal reveal-d1" data-en="Isutekitajad pererahva auväärt külalistele" data-et="Isutekitajad pererahva auväärt külalistele" data-ru="Закуски для почётного гостя" data-fi="Alkupalat arvokkaille vieraille">Isutekitajad pererahva<br>auväärt külalistele</h2>
       <div class="section-rule reveal reveal-d2"></div>
       <div class="reveal reveal-d2">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Kolmen juuston vati, mansikoita ja hunajaa" data-ru="Ассорти из трёх видов сыра с клубникой и мёдом">Kolme juustu vaagen maasikate ja meega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Three-cheese board with strawberries and honey</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">20 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Porsaan ribsit, hunaja-sinappikastiketta ja suolakurkkua" data-ru="Свиные рёбра с медово-горчичным соусом и солёным огурцом">Searibid mee-sinepikastme ja soolakurgiga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Pork ribs with honey-mustard sauce and pickles</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">15 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Naudanlihatartar, tryffelikastiketta ja parmesaania" data-ru="Тартар из говядины с трюфельным соусом и пармезаном">Veiseliha tartar trühvlikastme ja parmesaniga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Beef tartare with truffle sauce and parmesan</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">15 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Valkosipulileivät tryffelikastikkeen ja parmesaanin kera" data-ru="Чесночные гренки с трюфельным соусом и пармезаном">Küüslauguleivad trühvlikastme ja parmesaniga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Garlic croutons with truffle sauce and parmesan</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">9 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Kananmaksapatee, sipuli-puolukkahilloa, mustaa leipää ja mustikka-balsamicokastiketta" data-ru="Паштет из куриной печени с луково-брусничным вареньем, чёрным хлебом и чернично-бальзамическим соусом">Kanamaksapatee sibula-pohlamoosi ja musta leivaga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Chicken liver pâté with onion-lingonberry jam</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">13 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Porsaanpaistiviipaleet ja suolasilavaa, valkosipuli-sinappikastiketta, piparjuurta, marinoitua kurkkua ja mustaa leipää" data-ru="Буженина и солёное сало с чесночно-горчичным соусом, хреном, маринованным огурцом и чёрным хлебом">Seapraelõigud ja soolapekk küüslaugu-sinepikastmega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Pork roast slices with garlic-mustard sauce</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">14 €</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Kolme juustu vaagen maasikate ja meega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Three-cheese board with strawberries and honey</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">20 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Searibid mee-sinepikastme ja soolakurgiga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Pork ribs with honey-mustard sauce and pickles</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">15 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Veiseliha tartar trühvlikastme ja parmesaniga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Beef tartare with truffle sauce and parmesan</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">15 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Küüslauguleivad trühvlikastme ja parmesaniga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Garlic croutons with truffle sauce and parmesan</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">9 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Kanamaksapatee sibula-pohlamoosi ja musta leivaga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Chicken liver pâté with onion-lingonberry jam</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">13 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Seapraelõigud ja soolapekk küüslaugu-sinepikastmega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Pork roast slices with garlic-mustard sauce</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">14 €</span></div>
       </div>
     </div>
     <div class="reveal reveal-d1" style="position:relative;overflow:hidden">
@@ -186,7 +117,7 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
       <h2 class="section-h2 reveal reveal-d1" data-en="Leemed Hermen Potgeteri pajast" data-et="Leemed Hermen Potgeteri pajast" data-ru="Супы из котла Хермен Потгетера" data-fi="Keitot Hermen Potgeterin padasta">Leemed Hermen<br>Potgeteri pajast</h2>
       <div class="section-rule reveal reveal-d2"></div>
       <div class="reveal reveal-d2">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Perinteinen seljanka" data-ru="Классическая солянка">Klassikaline seljanka</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Classic solyanka</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">10 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Metsäsienikeitto ohrasuurimoiden ja savustetun perunan kera" data-ru="Суп из лесных грибов с перловкой и копчёным картофелем">Metsaseenesupp odrakruupide ja suitsukartuliga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Forest mushroom soup with barley and smoked potato</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">9 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Vegaaninen suolaheinäkeitto" data-ru="Веганский суп из щавеля">Vegan hapuoblikasupp</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Vegan sorrel soup</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">7 €</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Klassikaline seljanka</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Classic solyanka</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">10 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Metsaseenesupp odrakruupide ja suitsukartuliga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Forest mushroom soup with barley and smoked potato</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">9 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Vegan hapuoblikasupp</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Vegan sorrel soup</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">7 €</span></div>
       </div>
     </div>
   </div>
@@ -197,7 +128,7 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
       <h2 class="section-h2 reveal reveal-d1" data-en="Piprakott Hansu soovitused" data-et="Piprakott Hansu soovitused" data-ru="Рекомендации Пипракотт Ханса" data-fi="Piprakott Hansun suositukset">„Piprakott" Hansu<br>soovitused</h2>
       <div class="section-rule reveal reveal-d2"></div>
       <div class="reveal reveal-d2">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Rapea porsaanpotka, hapankaalia, uuniperunoita ja sinappikastiketta (kahdelle)" data-ru="Хрустящая свиная рулька с тушеной капустой, запечённым картофелем и горчичным соусом (на двоих)">Krõbe seakoot hapukapsa ja ahjukartulitega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Crispy pork knuckle with sauerkraut (for two)</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">45 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Porsaanribsit, kirsikkaglasuuri, BBQ-kastiketta ja tuoretta salaattia" data-ru="Свиные рёбра с вишнёвой глазурью, соусом BBQ и свежим салатом">Searibid kirsiglasuuri, barbeque-kastme ja värskes salatiga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Pork ribs with cherry glaze and BBQ sauce</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">22 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Lampaanpotka, juuressosetta ja mausteista tomaattikastiketta" data-ru="Баранья голень с овощным пюре и пряным томатным соусом">Lambakoot juurviljapüree ja vürtsika tomatikastmega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Lamb shank with vegetable purée and spiced tomato sauce</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">27 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Ankka-confit, punajuurikastiketta, haudutettua punakaalia sekä raparperi-chili-chutneyta" data-ru="Утиное конфи со свекольным соусом, тушёной красной капустой и ревенево-чили чатни">Pardi confit peedikastme ja rababarberchutney'ga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Duck confit with beetroot sauce and rhubarb chutney</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">25 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Naudan sisäfileestä valmistettu lehtipihvi, ranskalaisia perunoita, tuoretta salaattia ja demi-glace-kastiketta" data-ru="Отбивная из говяжьей вырезки с картофелем фри, свежим салатом и соусом demi-glace">Lehtpihv veise sisefileest friikartulite ja demi-glace'i kastmega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Beef tenderloin with fries and demi-glace</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">24 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Kuhafilee kerma-viinikastikkeessa, vihanneksia" data-ru="Филе судака в сливочно-винном соусе с овощами">Kohafile koore-veinikastmes köögiviljadega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Pike-perch fillet in cream-wine sauce with vegetables</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">21 €</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Krõbe seakoot hapukapsa ja ahjukartulitega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Crispy pork knuckle with sauerkraut (for two)</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">45 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Searibid kirsiglasuuri, barbeque-kastme ja värskes salatiga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Pork ribs with cherry glaze and BBQ sauce</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">22 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Lambakoot juurviljapüree ja vürtsika tomatikastmega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Lamb shank with vegetable purée and spiced tomato sauce</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">27 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Pardi confit peedikastme ja rababarberchutney'ga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Duck confit with beetroot sauce and rhubarb chutney</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">25 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Lehtpihv veise sisefileest friikartulite ja demi-glace'i kastmega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Beef tenderloin with fries and demi-glace</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">24 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Kohafile koore-veinikastmes köögiviljadega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Pike-perch fillet in cream-wine sauce with vegetables</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">21 €</span></div>
       </div>
     </div>
     <div class="reveal reveal-d1" style="position:relative;overflow:hidden">
@@ -216,7 +147,7 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
       <h2 class="section-h2 reveal reveal-d1" data-en="Peretütre Katharina magusroad" data-et="Peretütre Katharina magusroad" data-ru="Сладкие блюда дочери Катарины" data-fi="Perheentyttären Katharinan jälkiruoat">Peretütre Katharina<br>magusroad</h2>
       <div class="section-rule reveal reveal-d2"></div>
       <div class="reveal reveal-d2">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Perinteinen talkkunajälkiruoka, puolukkahilloa ja marinoitua kurpitsaa" data-ru="Традиционный десерт из камы с брусничным вареньем и маринованной тыквой">Traditsiooniline kamamagustoit pohlamoosiga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Traditional kama dessert with lingonberry jam</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">10 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Omenakakku, vaniljajäätelöä ja paahdettuja manteleita" data-ru="Яблочный пирог с ванильным мороженым и жареным миндалём">Õunakook vaniljejäätise ja röstitud mandlitega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Apple cake with vanilla ice cream and roasted almonds</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">9 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Panna cotta, mangosorbettia ja tyrnikastiketta" data-ru="Панна-котта с манговым сорбетом и облепиховым соусом">Panna cotta mangosorbeti ja astelpajukastmega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Panna cotta with mango sorbet and sea-buckthorn sauce</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">10 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Vaniljajäätelö, mustaherukkakastiketta ja tuoreita marjoja" data-ru="Ванильное мороженое с соусом из чёрной смородины и свежими ягодами">Vaniljejäätis mustsõstrakastme ja värskete marjadega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Vanilla ice cream with blackcurrant sauce and fresh berries</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">8 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500" data-fi="Mangosorbetti marjojen kera" data-ru="Манговый сорбет с ягодами">Mangosorbett marjadega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Mango sorbet with berries</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">8 €</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Traditsiooniline kamamagustoit pohlamoosiga</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Traditional kama dessert with lingonberry jam</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">10 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Õunakook vaniljejäätise ja röstitud mandlitega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Apple cake with vanilla ice cream and roasted almonds</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">9 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Panna cotta mangosorbeti ja astelpajukastmega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Panna cotta with mango sorbet and sea-buckthorn sauce</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">10 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Vaniljejäätis mustsõstrakastme ja värskete marjadega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Vanilla ice cream with blackcurrant sauce and fresh berries</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">8 €</span></div><div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div><p style="font-size:18px;color:var(--cream);font-weight:500">Mangosorbett marjadega</p><p style="font-size:14px;color:var(--cream-d);font-style:italic;margin-top:3px">Mango sorbet with berries</p></div><span style="font-family:Cinzel,serif;color:var(--gold);font-size:16px;white-space:nowrap;margin-left:20px">8 €</span></div>
       </div>
     </div>
   </div>
@@ -241,13 +172,12 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
     </div>
     <div class="footer-col">
       <h4 data-en="Hours" data-et="Lahtiolekuajad" data-ru="Часы работы" data-fi="Aukioloajat">Hours</h4>
-      <p>Restaurant<br>Mon–Thu: 17:00–23:00<br>Fri–Sun: 12:00–23:00<br><br>Cafe<br>Mon–Fri: 9:00–17:00<br>Sat–Sun: 10:00–18:00</p>
+      <p>Mon–Thu: 12–22<br>Fri–Sat: 12–23<br>Sun: 12–22</p>
     </div>
     <div class="footer-col">
       <h4 data-en="Contact" data-et="Kontakt" data-ru="Контакты" data-fi="Yhteystiedot">Contact</h4>
-      <a href="tel:+3726466996">Restaurant: +372 646 6996</a>
-      <a href="tel:+3726466995">Cafe: +372 646 6995</a>
-      <a href="mailto:peppersack@peppersack.ee">peppersack@peppersack.ee</a>
+      <a href="tel:+3726466798">+372 646 6798</a>
+      <a href="mailto:info@peppersack.ee">info@peppersack.ee</a>
       <a href="https://peppersack.ee">peppersack.ee</a>
     </div>
   </div>
@@ -269,128 +199,9 @@ footer{background:#060402;border-top:1px solid rgba(201,146,42,.15);padding:80px
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   // Language switcher
   const translations={};
-  // Store original dish names on load
-  document.querySelectorAll('p[style*="font-weight:500"]').forEach(function(nameEl) {
-    var descEl = nameEl.nextElementSibling;
-    if (descEl && descEl.style && descEl.style.fontStyle === 'italic') {
-      nameEl.dataset.et = nameEl.textContent;
-      nameEl.dataset.en = descEl.textContent;
-      // data-fi already set in HTML if available
-    }
-  });
-
-  function setLang(l) {
-    document.querySelectorAll('[data-en]').forEach(function(el) {
-      if (el.dataset[l]) el.innerHTML = el.dataset[l];
-    });
-    // Menu dish names: use Finnish if available, English fallback for RU
-    document.querySelectorAll('p[style*="font-weight:500"]').forEach(function(nameEl) {
-      if (!nameEl.dataset.et) return;
-      if (l === 'fi' && nameEl.dataset.fi) {
-        nameEl.textContent = nameEl.dataset.fi;
-      } else if (l === 'ru' && nameEl.dataset.ru) {
-        nameEl.textContent = nameEl.dataset.ru;
-      } else if (l === 'ru') {
-        nameEl.textContent = nameEl.dataset.en;
-      } else {
-        nameEl.textContent = nameEl.dataset.et;
-      }
-    });
-    document.querySelectorAll('.lang-btn').forEach(function(b) {
-      b.classList.toggle('active', b.dataset.lang === l);
-    });
-    localStorage.setItem('pp_lang', l);
-  }
+  function setLang(l){document.querySelectorAll('[data-en]').forEach(el=>{if(el.dataset[l])el.textContent=el.dataset[l]});document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));localStorage.setItem('pp_lang',l)}
   document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
   const sl=localStorage.getItem('pp_lang');if(sl)setLang(sl);
 </script>
-
-<script>
-(function(){
-  const hamburger = document.getElementById('hamburger');
-  
-  if(!hamburger||!mobileMenu)return;
-  hamburger.addEventListener('click',()=>{
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-    document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
-  });
-  mobileMenu.querySelectorAll('a').forEach(a=>{
-    a.addEventListener('click',()=>{
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-      document.body.style.overflow='';
-    });
-  });
-})();
-</script>
-
-
-<script>
-function applyMobileLayout(){
-  if(window.innerWidth>768)return;
-  var px='20px';
-
-  // Always prevent horizontal scroll
-  document.body.style.overflowX='hidden';
-
-  // Nav
-  var nav=document.querySelector('nav');
-  if(nav){nav.style.padding='0 '+px;nav.style.height='64px';}
-
-  // Sections
-  document.querySelectorAll('section').forEach(function(s){
-    var st=s.getAttribute('style')||'';
-    if(st.includes('padding:80px 60px')){s.style.padding='50px '+px;}
-    if(st.includes('padding:100px 60px')){s.style.padding='50px '+px;}
-    if(st.includes('padding:60px')){s.style.padding='50px '+px;}
-    if(st.includes('grid-template-columns:1fr 1fr')){
-      s.style.gridTemplateColumns='1fr';
-      s.style.gap='40px';
-      s.style.padding='50px '+px;
-    }
-  });
-
-  // Divs
-  document.querySelectorAll('div').forEach(function(d){
-    var st=d.getAttribute('style')||'';
-    // 2-col grids → 1 col
-    if(st.includes('grid-template-columns:1fr 1fr')){
-      d.style.gridTemplateColumns='1fr';
-      d.style.gap='24px';
-    }
-    // Allergen box / padded bordered divs
-    if(st.includes('padding:60px')&&st.includes('border')){
-      d.style.padding='32px '+px;
-    }
-    // Any other div with 60px side padding
-    if(st.includes('padding:60px')&&!st.includes('border')){
-      d.style.padding='32px '+px;
-    }
-  });
-
-  // Images inside sections
-  document.querySelectorAll('section img').forEach(function(img){
-    img.style.width='100%';
-    img.style.height='200px';
-    img.style.objectFit='cover';
-    img.style.borderRadius='4px';
-  });
-
-  // Footer
-  var footer=document.querySelector('footer');
-  if(footer){
-    footer.style.padding='48px '+px+' 32px';
-    var inner=footer.querySelector('.footer-inner');
-    if(inner){inner.style.gridTemplateColumns='1fr';inner.style.gap='32px';}
-    var bottom=footer.querySelector('.footer-bottom');
-    if(bottom){bottom.style.flexDirection='column';bottom.style.gap='10px';bottom.style.textAlign='center';}
-  }
-}
-document.addEventListener('DOMContentLoaded',applyMobileLayout);
-window.addEventListener('resize',applyMobileLayout);
-applyMobileLayout();
-</script>
-
 </body>
 </html>
